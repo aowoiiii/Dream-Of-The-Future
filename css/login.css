@@ -1,0 +1,74 @@
+*{ margin:0; padding:0;}
+body{ font-family:"微软雅黑"; font-size:14px; background:url(../image/background%20-%202.png) ; background-attachment:fixed; background-size:cover }
+a{text-decoration:none;}
+li{list-style-type:none;}
+.clear{ clear:both;}
+#show{height:3800px;}
+#show-project{height:2200px;}
+#show-login{height:600px;/*background:rgba(0,0,0,0.3)*/}
+#logo{ height:100px; width:390px; margin:0 auto; margin-top:10%}
+#logo img{width:390px; margin:0 auto; border-radius: 5px 5px 5px}
+
+/*超链接过渡*/
+a{transition: 0.2s;}
+a:hover{transition: 0.3s}
+
+input::-webkit-input-placeholder { 
+color: #999; 
+-webkit-transition: color.5s; 
+} 
+input:focus::-webkit-input-placeholder, input:hover::-webkit-input-placeholder { 
+color: #c2c2c2; 
+-webkit-transition: color.5s; 
+} 
+
+
+
+.A{ width:10px; height:40px; background:#FFF; float:left}
+.B img{ width:1100px}
+.C{ padding:20px}
+/*.D{ width:70px; height:300px; float:left}*/
+.E{ width:1100px; height:50px; float:left}
+
+
+
+
+/*登录界面*/
+#login-nx-panel{ background:#F4F4F4; width:350px ;height:230px ; border:solid #F5F5F5 20px; margin:0 auto ;border-radius: 5px 5px 5px 5px; margin-top:20px/*box-shadow: -1px -1px 8px #000*/}
+#login-nx-panel-heading{ font-weight:400; margin-left:10px; color:#333}
+.login-nx-panel-text{width:330px; height:40px; margin:0 auto; margin-top:30px}
+.login-nx-panel-text-left{ width:50px; height:40px; background:#b4b4b4; float:left;border-radius: 5px 0px 0px 5px; }
+.login-nx-panel-text-left img{width:25px; margin:6px 0 0 14px}
+.login-nx-panel-text-right{width:280px; height:40px; background:#FFF; float:right;}
+.login-nx-panel-text-right input{height:40px; width:270px; border-style:none ; font-size:16px ; padding-left:10px; background:#E7E7E7}
+.login-nx-panel-button{ height:30px; width:80px; background:#999; margin:40px 20px 0 60px ; float:right}
+.login-nx-panel-button a{text-align:center; line-height:30px; color:#FFF; display:block; height:30px; width:80px}
+.login-nx-panel-button a:hover{background:#F33}
+#login-nx-panel-nav{margin:50px 0 0 10px; float:left}
+#login-nx-panel-nav a{color:#C33}
+
+/*注册界面*/
+#sign_up-nx-panel{ background:#F4F4F4; width:350px ;height:330px ; border:solid #F5F5F5 20px; margin:0 auto ;border-radius: 5px 5px 5px 5px; margin-top:20px/*box-shadow: -1px -1px 8px #000*/}
+
+#sign_up-nx-panel-text{margin-top:20px}
+#sign_up-nx-panel-text p{margin:10px; color:#666; font-weight:300;line-height:22px}
+#sign_up-nx-panel-heading{ font-weight:400; margin-left:10px; color:#333}
+.sign_up-nx-panel-text{width:330px; height:40px; margin:0 auto; margin-top:30px}
+.sign_up-nx-panel-text-left{ width:50px; height:40px; background:#b4b4b4; float:left;border-radius: 5px 0px 0px 5px; }
+.sign_up-nx-panel-text-left img{width:25px; margin:6px 0 0 14px}
+.sign_up-nx-panel-text-right{width:280px; height:40px; background:#FFF; float:right;}
+.sign_up-nx-panel-text-right input{height:40px; width:270px; border-style:none ; font-size:16px ; padding-left:10px; background:#E7E7E7}
+.sign_up-nx-panel-button{ height:30px; width:80px; background:#999; margin:10px 20px 0 60px ; float:right}
+.sign_up-nx-panel-button a:hover{ background:#F33}
+.sign_up-nx-panel-button a{text-align:center; line-height:30px; color:#FFF; display:block; height:30px; width:80px;}
+#sign_up-nx-panel-nav{margin:20px 0 0 10px; float:left}
+#sign_up-nx-panel-nav a{color:#C33}
+
+
+
+
+
+
+#info{ width:700px; height:50px; margin: 0 auto; margin-top:20px;}
+#info img{float:left; width:170px}
+#info p{float:right; color:#FFF; font-size:13px; margin-top:15px}

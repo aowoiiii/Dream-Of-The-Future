@@ -1,0 +1,189 @@
+/*去除bootstrap圆角
+#nav-search > ul > li > div > input,
+#nav-search > ul > li > div > span > button,
+#choiceness-switch-btn > button,
+.products-list .list-group-item,
+.shop-car-top input,
+.shop-car-top button
+{
+	-webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+     border-radius: 0 !important;
+}
+*/
+/*过渡动画*/
+a,button{transition: 0.4s;}
+a:hover,button:hover{transition: 0.3s}
+
+
+/*隐藏bootstrap按钮蓝框*/
+button{outline:none;}
+
+/*自定义复选框*/
+input[type=checkbox]{
+      visibility: hidden;
+  }
+
+  input[type=checkbox]:checked::after{
+      background-image: url(../image/sprite.png);
+      background-repeat: no-repeat;
+      background-position: -60px -32px;
+      visibility: visible;
+  }
+  input[type=checkbox]::after{
+      content: '';
+      display: block;
+      height: 20px;
+      width: 20px;
+      background-image: url(../image/sprite.png);
+      background-repeat: no-repeat;
+      background-position: -25px -33px;
+      visibility: visible;
+  }
+
+
+
+
+body{ font-family:"微软雅黑"; background:url(../image/bg-simple.png);background-attachment:fixed; background-size:cover ; background-position: center; height: 1000px}
+
+.navbar{box-shadow: 1px 1px 10px #313131;}
+.navbar-right {background:#2D2D2D;color:#FFFFFF;display: block}
+#nav-search ul{background:#222222}
+#nav-search > ul > li{padding: 10px}
+#myCarousel{margin-top: 70px}
+#nav-search > ul > li > div > span > button{background:#FF5558 }
+#info{color: #FFFFFF; text-align: center;margin-top: 20px}
+.window-fix-lowright{background:#FFFFFF;height: 80px; width: 50px; position:fixed; bottom: 3%; right: 1%;box-shadow: 1px 1px 10px #c4c4c4; font-size: 30px;text-align: center;z-index:99}
+#to-top{background:#FF5558;height: 40px;width: 50px; display: block; color: #FFFFFF}
+#to-top:hover{background:#626262}
+#shop-car{color:#626262}
+#shop-car:hover{color: #FF5558}
+
+
+.hot-sell-products{background:#FFFFFF;padding: 10px;text-decoration:none;display: block;border-radius: 2px}
+.hot-sell-products h4{ text-align: center;color: #000000}
+.hot-sell-products:hover{box-shadow: 1px 1px 10px #c4c4c4;text-decoration:none;position:relative; top:-2px;}
+.hot-sell-products-box{padding: 5px}
+.index-title{margin:30px 0 20px 0;height: 30px;padding: 0}
+.index-title-red{background:#FF5558;width: 10px; height: 30px;float: left;margin-right: 15px;}
+.index-title h3{float: left; line-height: 30px;height:26px; margin: 0}
+
+.index-title-2{height: 35px; margin: 30px 0 50px 0}
+.index-title-2-red{width: 100%; height: 5px; background: #FF5558}
+.index-title-2-gray{width: 100%; height: 40px; background:#DDDDDD}
+.index-title-2-gray img{height: 24px; margin: 8px 0 0 10px;float: left}
+.index-title-2-gray h5{float: left; color:#666666;line-height: 40px; margin: auto 0 auto 20px;font-size: 16px;font-weight: 700}
+.list-group-img {height: 300px; background: #C5C5C5}
+	
+
+.partner-cs{padding: 35px}
+
+
+.img-show{display:block}
+.img-hide{display:none}
+
+
+.products-list{padding: 0; margin-top: 15px}
+
+#info{color: aliceblue; background:#000000 ;height: 80px;width: 100%;}
+#info p{margin-top: 20px}
+
+.dreamweaver-project{margin-top:80px;border-radius:5px; display: block}
+.dreamweaver-project:hover{opacity: 0.7;}
+
+
+.hot-sell-products-box img{width:100%;}
+.all-products img{width:100%;}
+
+#choiceness,#partner{margin: 0}
+
+#free-list img{margin-bottom: 40px}
+
+
+/**************购物车与结算订单**************/
+
+.shop-car-top,.pay-list-top{margin-top: 100px;height:150px}
+.shop-car-top-title img,.pay-list-top-title img{width: 80px;float: left}
+.shop-car-top-title,.pay-list-top-title{padding: 0}
+.shop-car-top-title h3,.pay-list-top-title h3{font-weight: 1200;color:#000000;float: left; margin: 0 0 0 20px; line-height:35px }
+.shop-car-top-search,.pay-list-top-search{margin-top: 0px;box-shadow: 1px 1px 10px #c4c4c4;padding: 0}
+.shop-car-top-search button,.pay-list-top-search button{background:#FF5558}
+.shop-car-top-search button span,.pay-list-top-search button span{color: #FFFFFF}
+
+.shop-car-list,.pay-list{padding: 0}
+.shop-car-list h3,.pay-list h3{margin: 0 0 15px 30px}
+.shop-car-list-style-wire-L,.pay-list-style-wire-L{height: 4px;background:#FF5558; width:150px; float: left}
+.shop-car-list-style-wire-R,.pay-list-style-wire-R{height: 4px;background:#B1B1B1;}
+.shop-car-list-titleinfo,.pay-list-titleinfo{margin:25px 0 0 20px;height: 20px; padding: 0 }
+
+.shop-car-list-products {margin:25px 0 0 20px}
+.shop-car-list-products h5{font-weight: bold}
+.shop-car-list-products > div{padding: 0;margin-bottom: 30px}
+.shop-car-list-products > div > p{font-weight: bold; color:#FF5558}
+.payncar-row-A{background: #ededed}
+.payncar-row-B{background: #f8f8f8}
+.payncar-row-A img,.payncar-row-B img{padding: 0 20px 0 0}
+
+
+.pay-list-products {margin:25px 0 0 20px ;background:#F6F6F6; height: 30px}
+.pay-list-products h5{font-weight: bold}
+.pay-list-products > div{padding: 0;margin-bottom: 30px}
+.pay-list-products > div > p{font-weight: bold; color:#FF5558}
+.pay-list-next-A{background:#FF5558; height: 5px}
+.pay-list-next-B{background:#F6F6F6; height: 30px}
+.pay-list-next-B > p{color:#FF5558;margin-right: 40px;line-height: 30px; font-weight: bold; font-size: 18px;float:right}
+.pay-list-next-B > button{float:left; border: 0; border-radius: 0; background: #FF5558; color: aliceblue; height: 30px;padding:  0 20px 0 20px}
+.pay-list-next-B > button:hover{background: #D73A3C; color: aliceblue}
+.pay-mode-img,.pay-mode-select{padding: 10px}
+.pay-tip{margin-top: 40px; font-weight: bold}
+.pay-btn{border: 0; border-radius: 0; background: #FF5558; color: aliceblue; height: 30px;text-align: center;margin-left: 30px}
+.pay-btn:hover{background: #D73A3C; color: aliceblue}
+
+/**************详情页**************/
+.particulars-header{margin: 100px 0 0 0}
+.particulars-header-left{}
+.particulars-header-center{height: 300px; padding-left: 50px}
+.particulars-header-title{font-weight: bold;margin-bottom: 10px}
+.particulars-header-title2{padding: 0;margin-bottom: 20px;color: #A8A8A8; font-size: 16px}
+.particulars-header-os{padding: 0;margin-bottom: 30px}
+.particulars-header-os > img{width: 60px;float: left}
+.particulars-header-os > h4{line-height: 20px; float: left;margin: 0 0 0 10px;color: #777777}
+.particulars-header-price{color: #FF5558;font-weight: bold}
+.particulars-header-btn{margin-top: 30px;padding: 0}
+.particulars-header-btn-tocar{float: left}
+.particulars-header-btn-tocar > button{background: #FF5558;}
+.particulars-header-btn-tocar > button > p{margin: 0;padding: 0; color: #FFFFFF}
+.particulars-header-btn-tobuy{float:right;margin-right: 30px}
+.particulars-header-btn-tobuy > button{}
+.particulars-header-btn-tobuy > button > p{margin: 0;padding: 0}
+.particulars-header-right{height: 300px}
+.particulars-header-right-red{float: left}
+.particulars-header-right-red-A{width: 6px; height: 40px; background: #FF5558; float: left}
+.particulars-header-right-red-B{width: 3px; height: 160px; background: #FF5558; float: left}
+.particulars-header-right-info{float: left; margin-left: 15px}
+.particulars-header-right-info > h4{font-weight: 400; margin-bottom: 13px}
+
+.particulars-content{margin-top: 50px}
+.particulars-content-brief{}
+.particulars-content-brief-title{width: 80px; height: 30px; background: #FF5558}
+.particulars-content-brief-title >h4{line-height: 30px;text-align: center; color: #FFFFFF}
+.particulars-content-brief-title-wire{height: 4px;width: 100% ;background: #FF5558}
+.particulars-content-trait{margin: 50px 0 30px 30px}
+.particulars-content-trait > div{height: 25px; width: 5px; background:#FF5558;float: left}
+.particulars-content-trait > h4 {line-height: 25px;padding: 0;margin: 0 30px}
+
+.particulars-content-useNotice{}
+.particulars-content-useNotice-title{width: 120px; height: 30px; background: #FF5558}
+.particulars-content-useNotice-title > h4{line-height: 30px;text-align: center; color: #FFFFFF}
+.particulars-content-useNotice-title-wire{height: 4px;width: 100% ;background: #FF5558}
+.particulars-content-useNotice-content{margin-top: 20px}
+.particulars-content-useNotice-content > div{height: 12px;width: 12px; background: #525252; border-radius:6px;float: left}
+.particulars-content-useNotice-content > p{position:relative; bottom: 3px}
+
+
+
+
+
+
+
+
