@@ -1,4 +1,4 @@
-/*去除bootstrap圆角
+去除bootstrap圆角
 #nav-search > ul > li > div > input,
 #nav-search > ul > li > div > span > button,
 #choiceness-switch-btn > button,
@@ -10,10 +10,10 @@
      -moz-border-radius: 0 !important;
      border-radius: 0 !important;
 }
-*/
+
 /*过渡动画*/
-a,button{transition: 0.4s;}
-a:hover,button:hover{transition: 0.3s}
+a,button,img{transition: 0.4s;}
+a:hover,button:hover,img:hover{transition: 0.3s}
 
 
 /*隐藏bootstrap按钮蓝框*/
@@ -53,16 +53,18 @@ body{ font-family:"微软雅黑"; background:url(../image/bg-simple.png);backgro
 #myCarousel{margin-top: 70px}
 #nav-search > ul > li > div > span > button{background:#FF5558 }
 #info{color: #FFFFFF; text-align: center;margin-top: 20px}
-.window-fix-lowright{background:#FFFFFF;height: 80px; width: 50px; position:fixed; bottom: 3%; right: 1%;box-shadow: 1px 1px 10px #c4c4c4; font-size: 30px;text-align: center;z-index:99}
+.window-fix-lowright{background:#FFFFFF;height: 80px; width: 50px; position:fixed; bottom: 3%; right: 1%;box-shadow: 1px 1px 10px #000000; font-size: 30px;text-align: center;z-index:99}
 #to-top{background:#FF5558;height: 40px;width: 50px; display: block; color: #FFFFFF}
 #to-top:hover{background:#626262}
 #shop-car{color:#626262}
 #shop-car:hover{color: #FF5558}
 
+.theme img:hover{box-shadow: 1px 1px 20px #000000;position:relative; top:-2px;}
 
 .hot-sell-products{background:#FFFFFF;padding: 10px;text-decoration:none;display: block;border-radius: 2px}
-.hot-sell-products h4{ text-align: center;color: #000000}
-.hot-sell-products:hover{box-shadow: 1px 1px 10px #c4c4c4;text-decoration:none;position:relative; top:-2px;}
+.hot-sell-products h4{ text-align: center;color: #000000; font-size: 15px}
+.hot-sell-products h4:hover{color: #F58083}
+.hot-sell-products:hover{box-shadow: 1px 1px 10px #c4c4c4;text-decoration:none;position:relative; top:-2px; }
 .hot-sell-products-box{padding: 5px}
 .index-title{margin:30px 0 20px 0;height: 30px;padding: 0}
 .index-title-red{background:#FF5558;width: 10px; height: 30px;float: left;margin-right: 15px;}
@@ -73,8 +75,9 @@ body{ font-family:"微软雅黑"; background:url(../image/bg-simple.png);backgro
 .index-title-2-gray{width: 100%; height: 40px; background:#DDDDDD}
 .index-title-2-gray img{height: 24px; margin: 8px 0 0 10px;float: left}
 .index-title-2-gray h5{float: left; color:#666666;line-height: 40px; margin: auto 0 auto 20px;font-size: 16px;font-weight: 700}
-.list-group-img {height: 300px; background: #C5C5C5}
-	
+.list-group-img {height: 300px}
+.list-group-img >img{border:  #B4B4B4 solid 2px}
+.magin-topzw{height: 100px}	
 
 .partner-cs{padding: 35px}
 
@@ -125,7 +128,7 @@ body{ font-family:"微软雅黑"; background:url(../image/bg-simple.png);backgro
 .payncar-row-A img,.payncar-row-B img{padding: 0 20px 0 0}
 
 
-.pay-list-products {margin:25px 0 0 20px ;background:#F6F6F6; height: 30px}
+.pay-list-products {margin:25px 0 0 20px ; height: 30px}
 .pay-list-products h5{font-weight: bold}
 .pay-list-products > div{padding: 0;margin-bottom: 30px}
 .pay-list-products > div > p{font-weight: bold; color:#FF5558}
@@ -179,6 +182,7 @@ body{ font-family:"微软雅黑"; background:url(../image/bg-simple.png);backgro
 .particulars-content-useNotice-content{margin-top: 20px}
 .particulars-content-useNotice-content > div{height: 12px;width: 12px; background: #525252; border-radius:6px;float: left}
 .particulars-content-useNotice-content > p{position:relative; bottom: 3px}
+
 
 
 
