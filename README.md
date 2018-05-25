@@ -3,4 +3,4 @@
 基于Bootstrap与少量Jquery编写  
 仅前端无后端 有坑待填  
 已绑定域名  ~~[slimrip.com](https://slimrip.com/)~~
-浏览器直接访问aowoiiii.github.io 即可
+浏览器直接访问[aowoiiii.github.io](https://aowoiiii.github.io/) 即可
