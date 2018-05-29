@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>俄罗斯方块</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+
+        td {
+
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            font-size: 4px;
+
+        }
+
+        .map_main {
+            border-right: black 2px solid;
+            background: #c5c8ad;
+        }
+
+        .map_main td {
+            background-color: #b8bba1;
+        }
+
+        .map_next_shape {
+            margin-left: 10px;
+        }
+
+        #start {
+            background: #b8bba1;
+            border-color: dimgray;
+            font-size: 16px;
+            height: 30px;
+            width: 80px;
+            margin: 80px 0 0 30px;
+            border: 1px black solid;
+        }
+
+        .score {
+            margin: 80px 0 0 30px;
+        }
+
+        .box {
+            border-radius: 2px;
+            margin: auto;
+            background: #c7ccae;
+            width: 500px;
+            border: 10px dimgray solid;
+            overflow: hidden;
+        }
+
+        .right_box {
+        }
+
+        .outline {
+            width: 600px;
+            margin: auto;
+            height: 900px;
+            box-shadow: 0px 0px 50px #a7a7a7;
+            border-radius: 5px;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="outline">
+    <div class="box">
+        <div style="float: left;">
+            <table class="map_main">
+                <script>
+                    for (var row = 0; row < 15; row++) {
+                        document.write("<tr>");
+                        for (var rank = 0; rank < 10; rank++) {
+                            document.write("<td></td>");
+                        }
+                        document.write("</tr>");
+                    }
+                </script>
+            </table>
+        </div>
+
+        <div class="right_box" style="float:left;">
+            <table class="map_next_shape">
+                <script>
+                    for (var row = 0; row < 4; row++) {
+                        document.write("<tr>");
+                        for (var rank = 0; rank < 4; rank++) {
+                            document.write("<td></td>");
+                        }
+                        document.write("</tr>");
+                    }
+                </script>
+            </table>
+            <h3 class="score">得分：</h3>
+            <button id="start">开始</button>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+<script>
+    const rotate_method = [3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12]
+    const rotate_method2 = [0, 1, 2, 3, 6, 10, 14, 7, 5, 9, 13, 11, 4, 8, 12, 15]
+    const shapes = [
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0],  // 1
+        [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0],  // 2
+        [0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0],  // 3
+        [0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],  // 4
+        [0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0],  // 5
+        [0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],  // 6
+        [0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],  // 7
+    ];
+    var rotate_flag = true;
+    var timer;
+    var score = 0;
+    var map_next_shape = $(".map_next_shape").find("td");   // 子地图 - 子元素为td块
+    var map_main = $(".map_main").find("td");   // 主地图 - 子元素为td块
+    var shape_temp_transform = []; //临时缓存地图 与 next_shape_xy相同
+    var activity_shape_xy = new Array(150);
+    var map_shape_xy = new Array(150);
+    var control_x = 0, control_y = 0; //方向控制记录
+    var temp_x = [], temp_y = [], r_num = [], black_num = []; // 边缘接触记录,随机数,红点标数量
+    function next_shape() {    /* 小地图 下一个方块 生成 渲染*/
+        // console.log("执行下一个图形,下一个方块代码:" + parseInt(r_num[0]))
+        for (i in shapes[r_num[0]]) {
+            map_next_shape[i].style.background = "#c7ccae";
+            if (shapes[r_num[0]][i] == 1) map_next_shape[i].style.background = "black";
+        }
+    }
+
+    let shape_activity = []
+
+    function move(x, y, e) {
+        let z = -1;
+        if (r_num[1] == undefined && r_num[0] == 5 || r_num[1] == 5) z = 0
+        // if (r_num[1] == 5) z = 0
+        console.log("执行move", x, y, e)
+        let shape_activity = [];
+        activity_shape_xy = []; //清空
+        for (i in shape_temp_transform) {
+            if (shape_temp_transform[i] == 1) shape_activity.push([(i % 4 + x + 3), parseInt(i / 4 + y + z)])
+        }
+
+        rotate_flag = ((shape_activity.map(x => x[1] * 10 + x[0]).map(n => map_shape_xy[n + 1] == 2).filter(n => n == true)[0] || shape_activity.map(x => x[1] * 10 + x[0]).map(n => map_shape_xy[n - 1] == 2).filter(n => n == true)[0]))
+        if (shape_activity.map(x => x[0]).map(x => x < 0 || x > 9).filter(x => x == true)[0] || ((e == 37 || e == 39) && shape_activity.map(n => map_shape_xy[n[0] + n[1] * 10] == 2).filter(n => n == true)[0])) {
+            console.log("执行边缘判断")
+            return control_x = temp_x[0], control_y = temp_y[0];
+        } else if (shape_activity.map(y => y[1]).map(y => y > 14).filter(y => y == true)[0] || shape_activity.map(n => map_shape_xy[n[0] + n[1] * 10] == 2).filter(n => n == true)[0]) {
+            console.log("执行底部判断")
+            shape_temp_transform = shapes [r_num[1]]; // =2 转移
+            for (i in shape_activity) {
+                map_shape_xy[shape_activity[i][0] + shape_activity[i][1] * 10 - 10] = 2
+            }
+            for (let i = 0; i < 15; i++) {
+                let num = 0;
+                for (let j = 0; j < 10; j++) {
+                    if (map_shape_xy[i * 10 + j] == 2) num++;
+                    if (num == 10) {
+                        score += 10;
+                        $(".score")[0].innerHTML = "得分:" + score;
+                        num = 0;
+                        map_shape_xy.splice(i * 10, 10);
+                        map_shape_xy.unshift(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                    }
+                }
+            }
+            r_num.splice(1, 1) //原位随机清空
+            if (GG()) throw "游戏结束"
+            shape_activity = activity_shape_xy = [];
+            control_x = control_y = temp_x[0] = temp_y[0] = 0;
+            shape_transform()
+        }
+        else {
+            for (i in shape_activity) {
+                activity_shape_xy[shape_activity[i][0] + shape_activity[i][1] * 10] = 1;
+            }
+            temp_x[0] = control_x, temp_y[0] = control_y;
+        }
+        map()
+    }
+
+    function GG() {
+        console.log("执行GG")
+        black_num.unshift(map_main.map(function (n, m) {
+            if (m.style.background == "black") return n
+        }).length)
+        if (black_num[0] == black_num[1]) {
+            alert("GG")
+            window.clearTimeout(timer)
+            return true;
+        }
+        return false
+    }
+
+    function map() {    /* 大地图 刷新 渲染  */
+        console.log("执行MAP")
+        for (let i = 0; i < map_shape_xy.length; i++) {
+            map_main[i].style.background = "#b8bba1";
+            if (activity_shape_xy[i] == 1 || map_shape_xy[i] == 2) {
+                map_main[i].style.background = "black";
+            }
+        }
+    }
+
+    function shape_rotate() {  /* 旋转 */
+        console.log("执行旋转")
+        let new_shape_transform = [];
+        console.log(r_num[1])
+        for (let i in shape_temp_transform) {
+            if (r_num[1] == 5 || r_num[1] == 4) {
+                new_shape_transform[i] = shape_temp_transform [rotate_method[i]];
+            } else {
+                new_shape_transform[i] = shape_temp_transform [rotate_method2[i]];
+            }
+        }
+        rotate_flag = true;
+        shape_temp_transform = new_shape_transform;
+        move(control_x, control_y);
+    }
+
+    function shape_create() {
+        // console.log("执行创建")
+        control_x = control_y = 0; //清空
+        r_num.unshift(parseInt(7 * Math.random()));
+        next_shape();
+    }
+
+    function shape_transform() {
+        // console.log("执行转移")
+        shape_temp_transform = shapes [r_num[0]]; //
+        move(0, 0);
+        shape_create();
+    }
+
+    $("button#start").click(function () {
+        shape_create()
+        shape_transform();
+        var timer = setInterval(() => move(control_x, ++control_y), 1000);
+    })
+
+    $(document).keydown(function (e = event || window.event) {
+        if (e.keyCode == 38 && !rotate_flag) shape_rotate();
+        else if (e.keyCode == 40) move(control_x, ++control_y, e.keyCode);
+        else if (e.keyCode == 37) move(--control_x, control_y, e.keyCode);
+        else if (e.keyCode == 39) move(++control_x, control_y, e.keyCode);
+    });
+</script>
+</body>
+</html>
